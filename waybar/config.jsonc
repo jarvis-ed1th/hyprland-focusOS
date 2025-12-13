@@ -1,0 +1,169 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34, 
+    "spacing": 4,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    
+    // Définit la taille des "Vraies Icônes" (Papirus) dans le Tray
+    "icon-size": 18,
+
+    // Ordre des modules
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": [ 
+        "custom/airplane",
+        "network",
+        "bluetooth",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "clock",
+        "group/systray-drawer"
+    ],
+
+    // --- WORKSPACES ---
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{id}",
+        "persistent-workspaces": {}
+    },
+    
+
+    
+
+    // --- TITRE DE LA FENÊTRE ---
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    // --- LECTEUR MÉDIA ---
+    "mpris": {
+        "format": "{player_icon}  {title} - {artist}",
+        "format-paused": "",
+        "tooltip": false,
+        "max-length": 40
+    },
+
+    // --- SON ---
+    "pulseaudio": {
+        "format": "{icon} {volume}%", 
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e pulsemixer",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.5",
+
+        // Baisse le volume de 5%
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip" : false
+    },
+
+    // --- RÉSEAU ---
+    "custom/airplane": {
+        "format": "{}", 
+        "exec": "~/.config/waybar/network_status.sh",
+        "interval": 1,
+        "tooltip": false,
+        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e nmtui" 
+    },
+
+    "network": {
+        "format-wifi": "󰖩",         // Icône Wi-Fi + Nom du réseau (ESSID)
+        "format-ethernet": "󰈀",     // Icône Ethernet + Adresse IP locale
+        "format-linked": "󰈀", // Ethernet connecté mais pas d'adresse IP (ex: en attente DHCP)
+        
+        // Si l'adaptateur Wi-Fi est là, mais désactivé (souvent le cas sur les portables)
+        "format-disconnected": "󰖪", // Icône déconnectée (Nerd Font 'Disconnected')
+        
+        // Si l'adaptateur Wi-Fi n'est pas trouvé ou n'est pas activé par un bouton physique
+        "tooltip": false,
+        
+        // Action lors du clic (Lance NMTUI pour gérer les connexions)
+        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e nmtui" 
+    },
+    
+    // --- BLUETOOTH ---
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
+        "format-no-controller": "",
+        "tooltip": false,
+        // --- LA CORRECTION EST ICI ---
+        // 1. On surcharge color7 (Blanc) pour qu'il devienne Marron (#605A52) JUSTE pour cette fenêtre
+        // 2. On garde l'option -w pour supprimer l'erreur OBEX
+        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/bluetuith.conf --class dotfiles-floating -e bluetuith -w"
+    },
+
+    // --- BATTERIE ---
+    "battery": {
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+
+    // --- HORLOGE (Format 15-Sep) ---
+    "clock": {
+        "format": "{:%H:%M  %d-%b}", // Heure + Date courte (ex: 15-Sep)
+        "tooltip": false
+    },
+
+    // --- TIROIR SYSTRAY ---
+    "group/systray-drawer": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/chevron", // Le bouton pour ouvrir
+            "tray"            // Les icônes d'applications (Papirus)
+        ]
+    },
+    
+    "custom/chevron": {
+        "format": "", // Flèche vers la gauche (Nerd Font)
+        "tooltip": false
+    },
+    
+    "tray": {
+        "spacing": 10
+        // La taille est gérée par le "icon-size": 18 tout en haut
+    },
+
+
+    "backlight": {
+        // "device": "intel_backlight", // Décommentez si Waybar ne trouve pas le bon écran
+        
+        // Le format : Icône + Espace + Pourcentage
+        "format": "{icon} {percent}%",
+        
+        // Les icônes progressives (Nerd Font)
+        "format-icons": [""],
+        
+        // On utilise votre script pour garder la sécurité des 5% minimum
+        "on-scroll-up": "~/.config/waybar/brightness.sh up",
+        "on-scroll-down": "~/.config/waybar/brightness.sh down",
+        
+        // Pas besoin de tooltip si le pourcentage est déjà affiché
+        "tooltip": false
+}
+
+
+}
+

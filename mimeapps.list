@@ -1,0 +1,66 @@
+[Default Applications]
+
+# --- 1. Web & Email ---
+# Navigateur (Firefox par défaut)
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/ftp=firefox.desktop
+# Email (Thunderbird)
+x-scheme-handler/mailto=thunderbird.desktop
+
+# --- 2. Code & Texte (VS Code OSS) ---
+text/plain=code-oss.desktop
+text/markdown=code-oss.desktop
+text/x-c=code-oss.desktop
+text/x-c++=code-oss.desktop
+text/x-python=code-oss.desktop
+text/x-java=code-oss.desktop
+text/x-sh=code-oss.desktop
+application/json=code-oss.desktop
+application/xml=code-oss.desktop
+application/yaml=code-oss.desktop
+text/csv=code-oss.desktop
+
+# --- 3. Images (Eye of GNOME) ---
+# Le nom du fichier est souvent org.gnome.eog.desktop sur Arch
+image/jpeg=org.gnome.eog.desktop
+image/png=org.gnome.eog.desktop
+image/gif=org.gnome.eog.desktop
+image/svg+xml=org.gnome.eog.desktop
+image/webp=org.gnome.eog.desktop
+image/bmp=org.gnome.eog.desktop
+image/tiff=org.gnome.eog.desktop
+
+# --- 4. Documents PDF (Okular) ---
+application/pdf=org.kde.okular.desktop
+
+# --- 5. Bureautique (OnlyOffice) ---
+# Documents Word (.docx, .doc)
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop
+application/msword=onlyoffice-desktopeditors.desktop
+# Tableurs Excel (.xlsx, .xls)
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=onlyoffice-desktopeditors.desktop
+application/vnd.ms-excel=onlyoffice-desktopeditors.desktop
+# Présentations PowerPoint (.pptx, .ppt)
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop
+application/vnd.ms-powerpoint=onlyoffice-desktopeditors.desktop
+# Formats OpenDocument (.odt, .ods, .odp)
+application/vnd.oasis.opendocument.text=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.spreadsheet=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.presentation=onlyoffice-desktopeditors.desktop
+
+# --- 6. Vidéo & Audio (VLC) ---
+# Vidéo
+video/mp4=vlc.desktop
+video/x-matroska=vlc.desktop
+video/webm=vlc.desktop
+video/avi=vlc.desktop
+video/quicktime=vlc.desktop
+video/x-msvideo=vlc.desktop
+# Audio
+audio/mpeg=vlc.desktop
+audio/flac=vlc.desktop
+audio/x-wav=vlc.desktop
+audio/mp4=vlc.desktop
+audio/ogg=vlc.desktop

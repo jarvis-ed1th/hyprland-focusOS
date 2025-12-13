@@ -1,0 +1,54 @@
+[[mgr.prepend_keymap]]
+on   = [ "&" ]
+run  = "tab_switch 0"
+desc = "Aller à l'onglet 1"
+
+[[mgr.prepend_keymap]]
+on   = [ "é" ]
+run  = "tab_switch 1"
+desc = "Aller à l'onglet 2"
+
+[[mgr.prepend_keymap]]
+on   = [ "\"" ]
+run  = "tab_switch 2"
+desc = "Aller à l'onglet 3"
+
+[[mgr.prepend_keymap]]
+on   = [ "'" ]
+run  = "tab_switch 3"
+desc = "Aller à l'onglet 4"
+
+[[mgr.prepend_keymap]]
+on   = [ "(" ]
+run  = "tab_switch 4"
+desc = "Aller à l'onglet 5"
+
+[[mgr.prepend_keymap]]
+on   = [ "-" ]
+run  = "tab_switch 5"
+desc = "Aller à l'onglet 6"
+
+[[mgr.prepend_keymap]]
+on   = [ "è" ]
+run  = "tab_switch 6"
+desc = "Aller à l'onglet 7"
+
+[[mgr.prepend_keymap]]
+on   = [ "_" ]
+run  = "tab_switch 7"
+desc = "Aller à l'onglet 8"
+
+[[mgr.prepend_keymap]]
+on   = [ "ç" ]
+run  = "tab_switch 8"
+desc = "Aller à l'onglet 9"
+
+[[mgr.prepend_keymap]]
+on   = [ "à" ]
+run  = "tab_switch 9"
+desc = "Aller à l'onglet 10"
+
+[[mgr.prepend_keymap]]
+on   = [ ";" ]
+run  = 'shell --block "read -e -p \">\" cmd && $cmd \"$@\""'
+desc = "Appliquer la commande"

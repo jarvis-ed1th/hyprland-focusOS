@@ -1,0 +1,66 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "arch_small", // Logo en version petite
+        "padding": {
+            "top": 2,
+            "right": 6 // Espace augmenté entre le logo et le texte
+        },
+        // Force le logo à utiliser la couleur 6 (Cyan/Teal) de votre palette Kitty
+        "color": {
+            "1": "cyan",
+            "2": "cyan" 
+        }
+    },
+    "display": {
+        // Style classique "Clé : Valeur"
+        "separator": " : ",
+        // Couleur des clés (OS, Host...) en Teal (#477A7B)
+        "color": "cyan"
+    },
+    "modules": [
+        // En-tête (User@Hostname)
+        {
+            "type": "title",
+            "color": {
+                "user": "cyan",
+                "at": "white",
+                "host": "cyan"
+            }
+        },
+        "separator",
+        {
+            "type": "os",
+            "key": "OS"
+        },
+        {
+            "type": "host",
+            "key": "Host"
+        },
+        {
+            "type": "kernel",
+            "key": "Kernel"
+        },
+        {
+            "type": "terminal",
+            "key": "Terminal"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU"
+        },
+        {
+            "type": "gpu",
+            "key": "GPU"
+        },
+        {
+            "type": "disk",
+            "key": "Disk"
+        },
+        {
+            "type": "wifi",
+            "key": "Wifi",
+            "format": "{ssid}" // Affiche le nom du réseau
+        }
+    ]
+}

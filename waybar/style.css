@@ -1,0 +1,137 @@
+/* -----------------------------------------------------------------------------
+ * STYLE WAYBAR "PAPIER" (Sans variables pour éviter les erreurs)
+ * ----------------------------------------------------------------------------- */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* La fenêtre principale est transparente pour l'effet flottant */
+window#waybar {
+    background-color: transparent;
+    color: #605A52; /* Foreground */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Le conteneur "Papier" 
+   C'est ici que se trouve le fond blanc cassé (#FCFBF9) 
+*/
+window#waybar > box {
+    background-color: #FCFBF9;
+    border-radius: 7px;
+    margin: 0px; 
+    padding: 2px 5px;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0); /* Ombre légère */
+}
+
+/* -----------------------------------------------------------------------------
+ * WORKSPACES (Hyprland)
+ * ----------------------------------------------------------------------------- */
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #605A52; /* Foreground */
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+/* Workspace actif : Texte Teal (#477A7B) et Gras sur fond Beige (#F7F3EE) */
+#workspaces button.active {
+    color: #477A7B;
+    font-weight: bold;
+    background-color: #F7F3EE;
+}
+
+#workspaces button:hover {
+    background-color: #F7F3EE;
+}
+
+#workspaces button.urgent {
+    color: #8F5652; /* Red */
+}
+
+/* -----------------------------------------------------------------------------
+ * TITRE FENÊTRE
+ * ----------------------------------------------------------------------------- */
+#window {
+    color: #605A52;
+    font-weight: bold;
+    opacity: 1.0;
+}
+
+/* -----------------------------------------------------------------------------
+ * MODULES DROITE
+ * ----------------------------------------------------------------------------- */
+/* Espacement commun pour tous les modules de droite */
+
+#network,
+#battery,
+#clock,
+#tray,
+#backlight,
+#pulseaudio,
+#custom-chevron {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0 10px;
+    color: #605A52;
+}
+
+/* --- Variantes spécifiques --- */
+
+/* Batterie faible (<10%) -> Rouge */
+#custom-airplane,
+#network,
+#bluetooth {
+    font-size: 17px;
+    padding: 0 10px;
+    color: #605A52;
+}
+
+#battery.critical {
+    color: #ff1100;
+}
+
+#battery.charging {
+    color: #605A52
+}
+
+/* Bluetooth connecté -> Bleu */
+#bluetooth.connected {
+    color: #556995;
+}
+
+/* Horloge -> Teal */
+#clock {
+    font-weight: bold;
+    color: #605A52;
+}
+
+/* --- Le Tiroir (Tray) --- 
+   L'icône d'engrenage pour ouvrir le tray
+*/
+#custom-chevron {
+    font-size: 16px;
+    margin-left: 10px;
+    color: #605A52;
+}
+
+/* Les icônes dans le tray */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #8F5652;
+}
+
+/* Animation Clignotement */
+@keyframes blink {
+    to {
+        color: #605A52;
+    }
+}

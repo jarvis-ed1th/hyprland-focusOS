@@ -1,0 +1,11 @@
+[opener]
+open = [
+    # orphan = true est IMPORTANT : cela permet à l'appli graphique de vivre
+    # indépendamment de Yazi (sinon elle risque de se fermer ou bloquer Yazi).
+    { run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "unix" },
+]
+
+# C'est la partie qui vous manquait probablement :
+[[open.prepend_rules]]
+name = "*"       # Pour n'importe quel nom de fichier
+use  = [ "open" ] # Utiliser l'opener défini ci-dessus
