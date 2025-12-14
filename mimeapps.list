@@ -1,5 +1,7 @@
 [Default Applications]
 
+inode/directory=yazi.desktop
+
 # --- 1. Web & Email ---
 # Navigateur (Firefox par défaut)
 text/html=firefox.desktop
