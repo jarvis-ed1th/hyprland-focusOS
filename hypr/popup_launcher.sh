@@ -4,8 +4,10 @@
 # Elle s'assure de remettre la config normale à la fin
 cleanup() {
     # On remet le comportement par défaut (changez le 1 si votre défaut est différent)
-    hyprctl keyword input:follow_mouse 1
-    hyprctl keyword input:float_switch_override_focus 1
+    if [[$(hyprctl activewindow -j | jq -r '.class') != "dotfiles-floating"]]; then
+        hyprctl keyword input:follow_mouse 1
+        hyprctl keyword input:float_switch_override_focus 1
+    fi
 }
 trap cleanup EXIT
 
@@ -23,9 +25,8 @@ PID=$!
 
 # On attend un instant que la fenêtre apparaisse et prenne le focus
 sleep 0.2
-ORIGIN_TITLE=$(hyprctl activewindow -j | jq -r '.title')
 
-# 3. BOUCLE DE SURVEILLANCE
+# 3. BOUCLE DE SURVEILLANCE²
 while true; do
     # Si le processus est mort (fermé par Echap, q, ou bouton close), on arrête
     if ! kill -0 $PID 2>/dev/null; then
@@ -33,11 +34,11 @@ while true; do
     fi
 
     # Quelle est la fenêtre qui a le focus ACTUELLEMENT ?
-    ACTIVE_TITLE=$(hyprctl activewindow -j | jq -r '.title')
+    ACTIVE_PID=$(hyprctl activewindow -j | jq -r '.pid')
 
     # Si la fenêtre active n'est PLUS notre popup "dotfiles-floating"
     # C'est que l'utilisateur a CLIQUÉ ailleurs (car le survol est désactivé)
-    if [[ "$ACTIVE_TITLE" != "$ORIGIN_TITLE" ]]; then
+    if [[ "$ACTIVE_PID" != "$PID" ]]; then
         # On ferme la fenêtre proprement
         kill $PID
         break

@@ -52,3 +52,8 @@ desc = "Aller à l'onglet 10"
 on   = [ ";" ]
 run  = 'shell --block "read -e -p \">\" cmd && $cmd \"$@\""'
 desc = "Appliquer la commande"
+
+[[mgr.prepend_keymap]]
+on   = [ "g","k" ]
+run  = "cd /run/media/ben"
+desc = "Go to USB keys"
