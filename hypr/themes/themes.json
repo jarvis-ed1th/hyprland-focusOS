@@ -1,0 +1,30 @@
+{
+  "dark": {
+    "colors": {
+      "background": "605a52",
+      "background_alt": "7a7166",
+      "foreground": "fcfbf9",
+      "accent": "93c7c7",
+      "color_red": "e06a72",
+      "color_green": "a5d87d",
+      "color_orange": "dea265",
+      "color_blue": "54c2cf",
+      "color_purple": "d87cf1"
+    },
+    "wallpaper": "~/.config/hypr/assets/wallpaper-dark.png"
+  },
+  "light": {
+    "colors": {
+      "background": "fcfbf9",
+      "background_alt": "f7f3ee",
+      "foreground": "605a52",
+      "accent": "93c7c7",
+      "color_red": "e06a72",
+      "color_green": "a5d87d",
+      "color_orange": "dea265",
+      "color_blue": "54c2cf",
+      "color_purple": "d87cf1"
+    },
+    "wallpaper": "~/.config/hypr/assets/wallpaper-light.png"
+  }
+}

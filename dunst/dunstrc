@@ -1,0 +1,4 @@
+[delete_all]
+    summary = "*"
+    skip_display = true
+    history_ignore = true

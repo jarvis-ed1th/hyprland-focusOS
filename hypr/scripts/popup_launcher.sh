@@ -4,27 +4,26 @@
 # Elle s'assure de remettre la config normale à la fin
 cleanup() {
     # On remet le comportement par défaut (changez le 1 si votre défaut est différent)
-    if [[$(hyprctl activewindow -j | jq -r '.class') != "dotfiles-floating"]]; then
-        hyprctl keyword input:follow_mouse 1
-        hyprctl keyword input:float_switch_override_focus 1
-    fi
+    hyprctl keyword input:follow_mouse 1
+    hyprctl keyword input:float_switch_override_focus 1
 }
 trap cleanup EXIT
 
 # 1. VERROUILLAGE DU FOCUS
 # follow_mouse 0 : La souris ne change plus le focus globalement
-hyprctl keyword input:follow_mouse 0
-# float_switch_override_focus 0 : Empêche le focus de "tomber" sur la fenêtre tuilée en dessous
-hyprctl keyword input:float_switch_override_focus 0
+
+
 
 # 2. LANCEMENT DE L'APPLICATION
 # $@ contient votre commande (kitty ... nmtui)
 $@ &
 PID=$!
-
-
+sleep 0.5
+hyprctl dispatch focuswindow "pid:$PID"
+hyprctl keyword input:follow_mouse 0
+# float_switch_override_focus 0 : Empêche le focus de "tomber" sur la fenêtre tuilée en dessous
+hyprctl keyword input:float_switch_override_focus 0
 # On attend un instant que la fenêtre apparaisse et prenne le focus
-sleep 0.2
 
 # 3. BOUCLE DE SURVEILLANCE²
 while true; do

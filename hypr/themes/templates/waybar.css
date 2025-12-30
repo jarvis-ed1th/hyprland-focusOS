@@ -1,7 +1,7 @@
-@define-color bg-color #fcfbf9;
-@define-color bg-alt #f7f3ee;
-@define-color fg-color #605a52;
-@define-color accent #93c7c7;
+@define-color bg-color #{{colors.background}};
+@define-color bg-alt #{{colors.background_alt}};
+@define-color fg-color #{{colors.foreground}};
+@define-color accent #{{colors.accent}};
 
  * {
     font-family: "JetBrainsMono NF";

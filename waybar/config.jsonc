@@ -1,16 +1,13 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 34, 
-    "spacing": 4,
-    "margin-top": 10,
-    "margin-left": 10,
-    "margin-right": 10,
+    "height": 35, 
+    "spacing": 5,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
     
-    // Définit la taille des "Vraies Icônes" (Papirus) dans le Tray
-    "icon-size": 18,
-
-    // Ordre des modules
+    // Module positions
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["hyprland/window"],
     "modules-right": [ 
@@ -24,72 +21,70 @@
         "group/systray-drawer"
     ],
 
-    // --- WORKSPACES ---
+    // Workspaces
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{id}",
-        "persistent-workspaces": {}
+        "persistent-workspaces": {
+            // "id monitor": [1, 2, 3]
+        }
     },
-    
 
-    
-
-    // --- TITRE DE LA FENÊTRE ---
+    // Window title
     "hyprland/window": {
         "format": "{title}",
         "max-length": 50,
         "separate-outputs": true
     },
 
-    // --- LECTEUR MÉDIA ---
+    // Media
     "mpris": {
-        "format": "{player_icon}  {title} - {artist}",
-        "format-paused": "",
-        "tooltip": false,
-        "max-length": 40
+        "format": "{player_icon} <i>{title} - {artist}</i>",
+        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+        "player-icons": {
+            "default": "▶"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 50
     },
 
-    // --- SON ---
+    // Sound
     "pulseaudio": {
-        "format": "{icon} {volume}%", 
+        "format": "{icon} {volume}%",
         "format-muted": " Muted",
         "format-icons": {
             "default": ["", "", ""]
         },
-        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e pulsemixer",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.5",
 
-        // Baisse le volume de 5%
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --class settings -e pulsemixer",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.5",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "tooltip" : false
     },
 
-    // --- RÉSEAU ---
+    // Network
     "custom/airplane": {
         "format": "{}", 
         "exec": "~/.config/waybar/network_status.sh",
         "interval": 1,
         "tooltip": false,
-        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e nmtui" 
+        "on-click": "~/.config/hypr/sciprts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
     },
 
     "network": {
-        "format-wifi": "󰖩",         // Icône Wi-Fi + Nom du réseau (ESSID)
-        "format-ethernet": "󰈀",     // Icône Ethernet + Adresse IP locale
-        "format-linked": "󰈀", // Ethernet connecté mais pas d'adresse IP (ex: en attente DHCP)
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰈀",
+        "format-linked": "󰈀",
+        "format-disconnected": "󰖪",
         
-        // Si l'adaptateur Wi-Fi est là, mais désactivé (souvent le cas sur les portables)
-        "format-disconnected": "󰖪", // Icône déconnectée (Nerd Font 'Disconnected')
-        
-        // Si l'adaptateur Wi-Fi n'est pas trouvé ou n'est pas activé par un bouton physique
         "tooltip": false,
-        
-        // Action lors du clic (Lance NMTUI pour gérer les connexions)
-        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class dotfiles-floating -e nmtui" 
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
     },
     
-    // --- BLUETOOTH ---
+    // Bluetooth
     "bluetooth": {
         "format": "󰂯",
         "format-disabled": "󰂲",
@@ -97,16 +92,24 @@
         "format-connected": "󰂱",
         "format-no-controller": "",
         "tooltip": false,
-        // --- LA CORRECTION EST ICI ---
-        // 1. On surcharge color7 (Blanc) pour qu'il devienne Marron (#605A52) JUSTE pour cette fenêtre
-        // 2. On garde l'option -w pour supprimer l'erreur OBEX
-        "on-click": "~/.config/hypr/popup_launcher.sh kitty --config ~/.config/kitty/bluetuith.conf --class dotfiles-floating -e bluetuith -w"
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/bluetuith.conf --class settings -e bluetuith -w"
     },
 
-    // --- BATTERIE ---
+    //Backlight
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [""],
+
+        "on-scroll-up": "~/.config/waybar/brightness.sh up",
+        "on-scroll-down": "~/.config/waybar/brightness.sh down",
+        
+        "tooltip": false
+    },
+
+    // Battery
     "battery": {
         "states": {
-            "warning": 20,
+            "warning": 10,
             "critical": 10
         },
         "format": "{icon} {capacity}%",
@@ -116,13 +119,13 @@
         "tooltip": false
     },
 
-    // --- HORLOGE (Format 15-Sep) ---
+    // Clock
     "clock": {
-        "format": "{:%H:%M  %d-%b}", // Heure + Date courte (ex: 15-Sep)
+        "format": "{:%H:%M  %d-%b}",
         "tooltip": false
     },
 
-    // --- TIROIR SYSTRAY ---
+    // Systray
     "group/systray-drawer": {
         "orientation": "horizontal",
         "drawer": {
@@ -131,39 +134,17 @@
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/chevron", // Le bouton pour ouvrir
-            "tray"            // Les icônes d'applications (Papirus)
+            "custom/chevron",
+            "tray"
         ]
     },
     
     "custom/chevron": {
-        "format": "", // Flèche vers la gauche (Nerd Font)
+        "format": "",
         "tooltip": false
     },
     
     "tray": {
         "spacing": 10
-        // La taille est gérée par le "icon-size": 18 tout en haut
-    },
-
-
-    "backlight": {
-        // "device": "intel_backlight", // Décommentez si Waybar ne trouve pas le bon écran
-        
-        // Le format : Icône + Espace + Pourcentage
-        "format": "{icon} {percent}%",
-        
-        // Les icônes progressives (Nerd Font)
-        "format-icons": [""],
-        
-        // On utilise votre script pour garder la sécurité des 5% minimum
-        "on-scroll-up": "~/.config/waybar/brightness.sh up",
-        "on-scroll-down": "~/.config/waybar/brightness.sh down",
-        
-        // Pas besoin de tooltip si le pourcentage est déjà affiché
-        "tooltip": false
+    }
 }
-
-
-}
-

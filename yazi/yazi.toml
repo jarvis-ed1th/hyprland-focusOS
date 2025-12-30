@@ -1,11 +1,21 @@
 [opener]
 open = [
-    # orphan = true est IMPORTANT : cela permet à l'appli graphique de vivre
-    # indépendamment de Yazi (sinon elle risque de se fermer ou bloquer Yazi).
     { run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "unix" },
 ]
 
-# C'est la partie qui vous manquait probablement :
+appimage = [
+    { run = "$@", orphan = true, desc = "Launch appimage", for = "unix" }
+]
+
+sudo-edit = [
+    { run = 'VISUAL="code --wait" sudo -e "$@"', block = true, desc = "Éditer en Root (VS Code)" },
+    { run = 'VISUAL=nvim EDITOR=nvim sudo -e "$@"', block = true, desc = "Éditer en Root (Nvim)" }
+]
+
 [[open.prepend_rules]]
-name = "*"       # Pour n'importe quel nom de fichier
-use  = [ "open" ] # Utiliser l'opener défini ci-dessus
+name = "*.appimage"
+use  = [ "appimage" ]
+
+[[open.prepend_rules]]
+name = "*"
+use  = [ "open" ]
