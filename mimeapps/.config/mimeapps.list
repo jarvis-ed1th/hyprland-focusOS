@@ -68,3 +68,4 @@ audio/mp4=vlc.desktop
 audio/ogg=vlc.desktop
 
 xdg-mime default org.qbittorrent.qBittorrent.desktop x-scheme-handler/magnet
+application/lrf=calibre-lrfviewer.desktop

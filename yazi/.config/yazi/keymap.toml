@@ -80,7 +80,7 @@ desc = "Sudo edit"
 
 [[mgr.prepend_keymap]]
 on = "<C-d>"
-run = "shell 'ripdrag '$@''"
+run = 'shell "ripdrag -a -x \"$@\""'
 desc = "Drag and drop"
 
 [[mgr.prepend_keymap]]
