@@ -78,3 +78,14 @@ window#waybar > box {
 #battery.critical {
     color: #ff1100;
 }
+
+{% if mode == 'light' %}
+#tray {
+    background-color: @fg-color; /* Couleur sombre (ex: gris foncé/noir) */
+    color: @bg-color;           /* Couleur des icônes (si supporté) */
+    padding: 0 10px;           /* Un peu d'espace sur les côtés */
+    border-radius: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+{% endif %}

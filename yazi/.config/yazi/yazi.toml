@@ -1,10 +1,14 @@
 [opener]
 open = [
-    { run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "unix" },
+    { run = 'xdg-open "$@"', orphan = true, desc = "Open with xdg", for = "unix" },
 ]
 
-appimage = [
-    { run = "$@", orphan = true, desc = "Launch appimage", for = "unix" }
+execute = [
+    { run = "$@", orphan = true, desc = "Launch", for = "unix" }
+]
+
+edit = [
+    { run = '${EDITOR:-nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" }
 ]
 
 sudo-edit = [
@@ -13,9 +17,27 @@ sudo-edit = [
 ]
 
 [[open.prepend_rules]]
-name = "*.appimage"
-use  = [ "appimage" ]
+mime = "application/executable"
+use = "execute"
 
 [[open.prepend_rules]]
-name = "*"
-use  = [ "open" ]
+mime = "application/pie-executable"
+use = "execute"
+
+[[open.prepend_rules]]
+mime = "text/shellscript"
+use = "execute"
+
+[[open.prepend_rules]]
+url = "*"
+use  = [ "open", "edit" ]
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"

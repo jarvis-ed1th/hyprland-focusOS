@@ -8,7 +8,7 @@ if [[ "$STATUS" == "enabled" ]]; then
     # Ne retourne rien, ou une chaîne vide. 
     # C'est le module 'network' classique qui prendra le relais.
     echo ""
-else [[ "$STATUS" == "disabled" ]]; then
+elif [[ "$STATUS" == "disabled" ]]; then
     # La radio est désactivée (Mode avion)
     echo "󰀝"
     # 󰛁 est l'icône Avion (Aeroplane) dans Nerd Fonts

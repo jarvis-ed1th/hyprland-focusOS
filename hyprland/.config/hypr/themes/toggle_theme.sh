@@ -40,7 +40,8 @@ fi
 
 
 # 5. Rafraîchir les applications
-killall -SIGUSR2 waybar        # Recharge le CSS de Waybar
+killall waybar        # Recharge le CSS de Waybar
+waybar
 killall -SIGUSR1 kitty         # Recharge la config de Kitty
 killall hyprpaper
 hyprpaper &

@@ -71,7 +71,7 @@
         "exec": "~/.config/waybar/network_status.sh",
         "interval": 1,
         "tooltip": false,
-        "on-click": "~/.config/hypr/sciprts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
     },
 
     "network": {
@@ -129,7 +129,7 @@
     "group/systray-drawer": {
         "orientation": "horizontal",
         "drawer": {
-            "transition-duration": 500,
+            "transition-duration": 300,
             "children-class": "not-power",
             "transition-left-to-right": false
         },

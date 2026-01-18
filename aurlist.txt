@@ -1,0 +1,8 @@
+anki-bin
+bluetuith
+kopia-ui-bin
+localsend-bin
+onlyoffice-bin
+ripdrag
+visual-studio-code-bin
+yay
