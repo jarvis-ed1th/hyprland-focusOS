@@ -1,0 +1,17 @@
+{
+    "workbench.startupEditor": "none",
+    "window.dialogStyle": "custom",
+    "workbench.colorTheme": "Atom One Light",
+    "editor.fontFamily": "JetBrainsMono NF",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Atom One Dark",
+    "workbench.preferredLightColorTheme": "Atom One Light",
+    "workbench.preferredHighContrastLightColorTheme": "Atom One Dark",
+    "workbench.preferredHighContrastColorTheme": "Atom One Dark",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
+}

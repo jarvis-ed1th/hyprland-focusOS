@@ -1,8 +1,10 @@
-anki-bin
-bluetuith
-kopia-ui-bin
-localsend-bin
-onlyoffice-bin
-ripdrag
-visual-studio-code-bin
-yay
+anki-bin 25.09.2-1
+bluetuith 0.2.6-1
+gprbuild-bootstrap 1:26.0w-1
+kopia-ui-bin 0.22.3-1
+localsend-bin 1.17.0-1
+onlyoffice-bin 9.2.0-1
+ripdrag 0.4.11-1
+visual-studio-code-bin 1.107.1-1
+yay 12.5.7-1
+z-library-electron 2.4.3-1

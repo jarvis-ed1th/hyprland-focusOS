@@ -8,7 +8,8 @@ execute = [
 ]
 
 edit = [
-    { run = '${EDITOR:-nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" }
+    { run = 'nvim "$@"', desc = "Nvim", block = true, for = "unix" },
+    { run = 'code "$@"', desc = "VSCode", block = true, for = "unix" }
 ]
 
 sudo-edit = [
@@ -18,15 +19,15 @@ sudo-edit = [
 
 [[open.prepend_rules]]
 mime = "application/executable"
-use = "execute"
+use = ["execute", "edit"]
 
 [[open.prepend_rules]]
 mime = "application/pie-executable"
-use = "execute"
+use = ["execute", "edit"]
 
 [[open.prepend_rules]]
 mime = "text/shellscript"
-use = "execute"
+use = ["execute", "edit"]
 
 [[open.prepend_rules]]
 url = "*"

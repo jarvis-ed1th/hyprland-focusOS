@@ -1,16 +1,20 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 35, 
+    "height": 35,
     "spacing": 5,
     "margin-top": 5,
     "margin-left": 5,
     "margin-right": 5,
-    
     // Module positions
-    "modules-left": ["hyprland/workspaces", "mpris"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": [ 
+    "modules-left": [
+        "hyprland/workspaces",
+        "mpris"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
         "custom/airplane",
         "network",
         "bluetooth",
@@ -20,7 +24,6 @@
         "clock",
         "group/systray-drawer"
     ],
-
     // Workspaces
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -30,14 +33,12 @@
             // "id monitor": [1, 2, 3]
         }
     },
-
     // Window title
     "hyprland/window": {
         "format": "{title}",
         "max-length": 50,
         "separate-outputs": true
     },
-
     // Media
     "mpris": {
         "format": "{player_icon} <i>{title} - {artist}</i>",
@@ -50,40 +51,37 @@
         },
         "max-length": 50
     },
-
     // Sound
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": " Muted",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
-
         "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --class settings -e pulsemixer",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.5",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-        "tooltip" : false
+        "tooltip": false
     },
-
     // Network
     "custom/airplane": {
-        "format": "{}", 
+        "format": "{}",
         "exec": "~/.config/waybar/network_status.sh",
-        "interval": 1,
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui"
     },
-
     "network": {
         "format-wifi": "󰖩",
         "format-ethernet": "󰈀",
         "format-linked": "󰈀",
         "format-disconnected": "󰖪",
-        
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui" 
+        "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/nmtui.conf --class settings -e nmtui"
     },
-    
     // Bluetooth
     "bluetooth": {
         "format": "󰂯",
@@ -94,18 +92,16 @@
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/popup_launcher.sh kitty --config ~/.config/kitty/bluetuith.conf --class settings -e bluetuith -w"
     },
-
     //Backlight
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": [""],
-
+        "format-icons": [
+            ""
+        ],
         "on-scroll-up": "~/.config/waybar/brightness.sh up",
         "on-scroll-down": "~/.config/waybar/brightness.sh down",
-        
         "tooltip": false
     },
-
     // Battery
     "battery": {
         "states": {
@@ -115,16 +111,20 @@
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
         "tooltip": false
     },
-
     // Clock
     "clock": {
         "format": "{:%H:%M  %d-%b}",
         "tooltip": false
     },
-
     // Systray
     "group/systray-drawer": {
         "orientation": "horizontal",
@@ -135,16 +135,23 @@
         },
         "modules": [
             "custom/chevron",
+            "custom/usb",
             "tray"
         ]
     },
-    
     "custom/chevron": {
         "format": "",
         "tooltip": false
     },
-    
     "tray": {
         "spacing": 10
+    },
+    "custom/usb": {
+        "exec": "~/.config/waybar/usb-helper.sh status",
+        "return-type": "json",
+        "interval": 3,
+        "on-click": "~/.config/waybar/usb-helper.sh unmount",
+        "format": "{}",
+        "signal": 8
     }
 }

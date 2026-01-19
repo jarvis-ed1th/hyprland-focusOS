@@ -3,18 +3,19 @@
 @define-color fg-color #605a52;
 @define-color accent #93c7c7;
 
- * {
+* {
     font-family: "JetBrainsMono NF";
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: transparent; /* allows round corner */
+    background-color: transparent;
+    /* allows round corner */
     color: @fg-color;
 }
 
-window#waybar > box {
+window#waybar>box {
     background-color: @bg-color;
     border-radius: 7px;
 }
@@ -23,7 +24,8 @@ window#waybar > box {
 #workspaces button {
     padding: 5px 5px;
     background-color: transparent;
-    color: @fg-color; /* Foreground */
+    color: @fg-color;
+    /* Foreground */
     border-radius: 7px;
     margin-left: 5px;
     margin-top: 5px;
@@ -57,6 +59,7 @@ window#waybar > box {
 #battery,
 #clock,
 #tray,
+#custom-usb,
 #custom-chevron {
     font-weight: bold;
     font-size: 14px;
@@ -81,10 +84,20 @@ window#waybar > box {
 
 
 #tray {
-    background-color: @fg-color; /* Couleur sombre (ex: gris foncé/noir) */
-    color: @bg-color;           /* Couleur des icônes (si supporté) */
-    padding: 0 10px;           /* Un peu d'espace sur les côtés */
+    background-color: @fg-color;
+    /* Couleur sombre (ex: gris foncé/noir) */
+    color: @bg-color;
+    /* Couleur des icônes (si supporté) */
+    padding: 0 10px;
+    /* Un peu d'espace sur les côtés */
     border-radius: 7px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+
+#custom-usb.active {
+    color: @fg-color;
+    border-radius: 15px;
+    margin-right: 5px;
 }
